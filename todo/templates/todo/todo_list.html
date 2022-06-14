@@ -44,6 +44,11 @@
           <button>Edit</button>
         </form>
       </td>
+      <td>
+        <form action="/delete/{{ item.id }}" method="get">
+          <button>Delete</button>
+        </form>
+      </td>
     </tr>
     {% endfor %}
     {% endif %}
