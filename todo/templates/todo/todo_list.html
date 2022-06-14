@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <h1>Things I need to do.</h1>
+  <table>
+    {% if items|length == 0 %}
+    <tr>
+      <td>You have nothing to do.</td>
+    </tr>
+    {% else %}
+    <tr>
+      {% for field in fields %}
+      <th>
+        {{ field.name }}
+      </th>
+      {% endfor %}
+    </tr>
+    {% for item in items %}
+    <tr>
+      {% if item.done %}
+      <td><strike>{{ item.id }}</strike></td>
+      <td><strike>{{ item.name }}</strike></td>
+      <td><strike>{{ item.done }}</strike></td>
+      {% else %}
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.done }}</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table>
+
+  <!-- 'for ... empty' -->
+  <!-- <ul>
+    {% for item in items %}
+    <li>{{ item.name }}</li>
+    {% empty %}
+    <li>You have nothing to do.</li>
+    {% endfor %}
+  </ul> -->
 </body>
+
 </html>
