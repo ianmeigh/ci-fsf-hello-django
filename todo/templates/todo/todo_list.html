@@ -35,6 +35,11 @@
       <td>{{ item.done }}</td>
       {% endif %}
       <td>
+        <form action="/toggle/{{ item.id }}" method="get">
+          <button>Toggle</button>
+        </form>
+      </td>
+      <td>
         <form action="/edit/{{ item.id }}" method="get">
           <button>Edit</button>
         </form>
