@@ -9,13 +9,13 @@
 </head>
 
 <body>
-  <h1>Add a todo item:</h1>
-  <form method="POST" action="add">
+  <h1>Edit a todo item:</h1>
+  <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <div>
       <p>
-        <input type="submit" value="Add Item">
+        <input type="submit" value="Update Item">
       </p>
     </div>
 

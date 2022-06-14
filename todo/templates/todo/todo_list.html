@@ -34,6 +34,11 @@
       <td>{{ item.name }}</td>
       <td>{{ item.done }}</td>
       {% endif %}
+      <td>
+        <form action="/edit/{{ item.id }}" method="get">
+          <button>Edit</button>
+        </form>
+      </td>
     </tr>
     {% endfor %}
     {% endif %}
