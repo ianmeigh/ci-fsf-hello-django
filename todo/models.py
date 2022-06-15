@@ -7,5 +7,5 @@ class Item(models.Model):
     done = models.BooleanField(null=False, blank=False, default=False)
 
     # Override the inherited '__str__' method to return the Item 'name'
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
