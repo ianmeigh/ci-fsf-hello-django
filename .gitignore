@@ -9,3 +9,4 @@ cloudinary_python.txt
 .venv
 .env
 *.sqlite3
+.coverage
