@@ -3,13 +3,6 @@ from .models import Item
 
 
 class TestViews(TestCase):
-    # def setUp(self):
-    #     Item.objects.create(name="Test Todo Item")
-
-    # def test_todo_item_exists(self):
-    #     test_item = Item.objects.get(name="TestOnly")
-    #     self.assertEqual(test_item.name, "Test")
-
     def test_get_todo_list(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
