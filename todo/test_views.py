@@ -32,6 +32,15 @@ class TestViews(TestCase):
         except Item.DoesNotExist as e:
             self.fail(e)
 
+    def test_edit_item(self):
+        item = Item.objects.create(name="Test Edit Item")
+        response = self.client.post(
+            f"/edit/{item.id}", {"name": "Test Edit Item - Edited"}
+        )
+        self.assertRedirects(response, "/")
+        updated_item = Item.objects.get(id=item.id)
+        self.assertEqual(updated_item.name, "Test Edit Item - Edited")
+
     def test_delete_item(self):
         item = Item.objects.create(name="Test Delete Item")
         response = self.client.get(f"/delete/{item.id}")
