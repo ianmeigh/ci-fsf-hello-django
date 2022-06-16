@@ -10,3 +10,4 @@ cloudinary_python.txt
 .env
 *.sqlite3
 .coverage
+django_todo/settings_dev.py

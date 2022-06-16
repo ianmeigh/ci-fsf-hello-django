@@ -27,7 +27,7 @@ load_dotenv(Path.joinpath(BASE_DIR, ".env"))
 SECRET_KEY = environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = environ.get("ALLOWED_HOSTS", "127.0.0.1").split(",")
 
@@ -78,13 +78,6 @@ WSGI_APPLICATION = "django_todo.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {"default": dj_database_url.parse(environ.get("DATABASE_URL"))}
 
 
@@ -130,3 +123,9 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Override production variables if DJANGO_DEVELOPMENT env variable is set
+
+if environ.get("DJANGO_DEVELOPMENT"):
+    from .settings_dev import DEBUG, DATABASES  # or specific overrides
